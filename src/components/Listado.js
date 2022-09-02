@@ -20,7 +20,9 @@ export default function Listado({aumentar}) {
       {
         Lista.map(contenido=>{
           return(
-            <Item nombre={contenido.producto.nombre} 
+            <Item
+            key={contenido.id}
+            nombre={contenido.producto.nombre} 
             descripcion={contenido.producto.descripcion}
              stock={contenido.stock}
              contador={aumentar} />

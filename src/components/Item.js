@@ -10,25 +10,34 @@
 //    button       (este boton debe permitir comprar, pero si la cantidad es menor a 0 debe estar deshabilitado y decir "Sin stock")
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import React, {useState} from "react";
-export default function Item({nombre,descripcion,stock,contador}) {
+export default function Item({key,nombre,descripcion,stock,contador}) {
 
   const [cantidadStock,setCantidadStock]= useState(stock);
 
+
+
   const restaStock=()=>{
-    setCantidadStock(cantidadStock-1);
-    contador();
+    
+    if(cantidadStock>1){
+      setCantidadStock(cantidadStock-1);
+      contador();
+    }else if(cantidadStock ===1){
+      setCantidadStock(cantidadStock-1);
+      contador();
+      
+      
+    }
+    
   
   }
 
- const boton=  document.querySelector(".boton");
-
 
   return (
-    <div className='producto'>
+    <div className='producto' key={key}>
       <h3>{nombre}</h3>
       <p>{descripcion}</p>
       <h5>Stock<span>{cantidadStock>0? cantidadStock:"agotado"}</span></h5>
-      <button className="boton" onClick={restaStock}>{cantidadStock>0? "COMPRAR":"SIN STOCK"}</button>
+      <button disabled={cantidadStock<=0? true: false}  onClick={restaStock}>{cantidadStock>0? "COMPRAR": "SIN STOK"}</button>
      
     </div>
   )
