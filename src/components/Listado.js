@@ -6,11 +6,29 @@ import React from 'react'
 // ESTADO: Listado no necesita manejar un estado.
 // MÉTODOS: Listado no requiere de métodos.
 // PROPS: Listado recibe el método para aumentar el estado de App y se lo pasa a cada uno de sus hijos.
+import Item from "./Item"
+import Lista from "./data.json"
 
-export default function Listado() {
+//Lista.map(function(prop){console.log(prop.stock)})
+
+export default function Listado({aumentar}) {
+  
+  
+
   return (
     <div className='container'>
-      {/* renderizamos los Item aquí */}
+      {
+        Lista.map(contenido=>{
+          return(
+            <Item nombre={contenido.producto.nombre} 
+            descripcion={contenido.producto.descripcion}
+             stock={contenido.stock}
+             contador={aumentar} />
+
+
+          )
+        })
+      }
     </div>
   )
 }
