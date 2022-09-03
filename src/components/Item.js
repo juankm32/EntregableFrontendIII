@@ -8,7 +8,7 @@
 //    p
 //    h5 > span    (este span debe mostrar la cantidad si es mayor a 0 "agotado" si llega a 0)
 //    button       (este boton debe permitir comprar, pero si la cantidad es menor a 0 debe estar deshabilitado y decir "Sin stock")
-import { isDisabled } from "@testing-library/user-event/dist/utils";
+
 import React, {useState} from "react";
 export default function Item({key,nombre,descripcion,stock,contador}) {
 
@@ -17,18 +17,10 @@ export default function Item({key,nombre,descripcion,stock,contador}) {
 
 
   const restaStock=()=>{
-    
-    if(cantidadStock>1){
-      setCantidadStock(cantidadStock-1);
+
+    setCantidadStock(cantidadStock-1);
       contador();
-    }else if(cantidadStock ===1){
-      setCantidadStock(cantidadStock-1);
-      contador();
-      
-      
-    }
     
-  
   }
 
 
